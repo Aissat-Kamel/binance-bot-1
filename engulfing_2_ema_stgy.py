@@ -9,7 +9,7 @@ depth = "27 hours ago UTC+1"
 ema_used = [50, 100]
 
 
-def find_engulging(series):
+def find_engulfing(series):
     for i in series.index:
         if series[i] == 100:
             return i
@@ -21,7 +21,7 @@ def engulfing_strgy(tickers, num):
             for i in ema_used:
                 df["EMA_"+str(i)] = ta.EMA(df["Close"], timeperiod = i)
             engulfing = ta.CDLENGULFING(df["Open"], df["High"], df["Low"], df["Close"])
-            last_index = find_engulging(series = engulfing)
+            last_index = find_engulfing(series = engulfing)
 
             if bool(last_index):
                 close_price = float(df["Close"][last_index])
