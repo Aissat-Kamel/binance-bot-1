@@ -16,7 +16,7 @@ class Status():
         data = collection.find({})
         for dt in data:
             stat = dt["Status"]
-        return
+        return stat
 
 class Signals():
 
